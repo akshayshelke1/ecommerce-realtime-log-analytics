@@ -113,12 +113,13 @@ The architecture is designed for high availability, scalability, and automation,
 
 ## Key Features  
 
-- **Automated CI/CD Pipeline:** From code commit to deployment, everything is automated for faster and more reliable releases.  
-- **Infrastructure as Code:** Using **Terraform** for consistent and repeatable infrastructure provisioning.  
-- **Service Mesh with Istio:** Ensures secure, reliable communication between microservices with traffic management and mTLS.  
-- **Monitoring and Observability:** Real-time metrics collection using **Prometheus** and interactive dashboards in **Grafana**.  
-- **Centralized Logging and Alerting:** Logs managed through **Fluentd** and alerts via **Alertmanager** integrated with communication tools.  
-
+- **Real-time Log Processing** with AWS Lambda.
+- **Scalable Log Storage** using Amazon S3.
+- **Search & Visualization** through OpenSearch.
+- **ETL & Data Cataloging** with AWS Glue.
+- **SQL-based Querying** via Athena.
+- **Automated CI/CD Deployment** using AWS CodePipeline.
+- **Alerting & Monitoring** with Amazon SNS.
 ---
 
 ## Benefits  
