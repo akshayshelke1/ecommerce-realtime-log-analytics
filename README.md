@@ -77,7 +77,6 @@ The architecture is designed for high availability, scalability, and automation,
 ## Architecture Flow  
 
 **Step 1: Log Collection & Storage:**
- 
     - The e-commerce application generates logs (transaction logs, user activity logs, error logs).
     - Logs are automatically sent to an Amazon S3 bucket in raw format.
     - S3 Event Notifications trigger an AWS Lambda function whenever a new log file is uploaded.
