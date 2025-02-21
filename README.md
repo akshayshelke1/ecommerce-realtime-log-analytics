@@ -79,35 +79,36 @@ The architecture is designed for high availability, scalability, and automation,
 1. **Code Commit:**  
     - Developers push code to **GitHub**, triggering the CI/CD pipeline.  
 
-2. **Continuous Integration (CI):**  
-    - **Jenkins** detects code changes from GitHub, builds the application, runs tests, and containerizes it using **Docker**.  
+This section details the step-by-step process from log ingestion to analysis and monitoring.
 
-3. **Image Push:**  
-    - Jenkins pushes the built Docker images to **Amazon ECR**, ensuring version control and availability for deployment.  
-
-4. **Infrastructure Deployment:**  
-    - **Terraform** provisions AWS infrastructure components, including:  
-        - **VPC:** For secure networking.  
-        - **IAM Roles and Policies:** Managing permissions and security.  
-        - **EKS Cluster:** For deploying Kubernetes workloads.  
-        - **RDS:** For persistent storage requirements.  
-
-5. **Continuous Deployment (CD):**  
-    - **Jenkins** deploys the Docker images to **Amazon EKS** using Kubernetes manifests or Helm charts.  
-    - **Istio** manages traffic routing between microservices, enabling advanced traffic management and canary deployments.  
-
-6. **Service Mesh Management:**  
-    - **Istio** handles service-to-service communication, securing interactions with mTLS, managing traffic flows, and collecting telemetry data for observability.  
-
-7. **Monitoring & Logging:**  
-    - **Prometheus** collects metrics from Kubernetes and Istio.  
-    - **Grafana** visualizes the metrics through detailed and interactive dashboards.  
-    - **Fluentd** centralizes logging, forwarding logs to **Amazon CloudWatch** or Elasticsearch for monitoring and analysis.  
-
-8. **Alerting and Continuous Feedback:**  
-    - **Alertmanager** monitors metrics from **Prometheus** and sends alerts when issues are detected.  
-    - Alerts are sent to communication platforms like **Slack** or **Email** for quick incident response.  
-    - **Jenkins** provides feedback on build and deployment statuses, keeping developers informed throughout the pipeline.  
+**Step 1: Log Collection & Storage: **
+ 
+    - The e-commerce application generates logs (transaction logs, user activity logs, error logs).
+    - Logs are automatically sent to an Amazon S3 bucket in raw format.
+•	S3 Event Notifications trigger an AWS Lambda function whenever a new log file is uploaded.
+Step 2: Real-time Processing & Transformation
+•	The Lambda function reads and processes the raw logs, extracting key information such as IP addresses, user actions, product interactions, and error messages.
+•	The processed logs are stored back in a separate S3 bucket for further indexing and querying.
+•	If a critical issue is detected (e.g., multiple failed logins, high error rates), Amazon SNS sends an alert via email/SMS.
+Step 3: Log Indexing & Search in OpenSearch
+•	A second Lambda function sends processed log data to Amazon OpenSearch for indexing.
+•	Users can perform full-text searches on logs and visualize trends via Kibana dashboards.
+Step 4: Data Cataloging & ETL using AWS Glue
+•	AWS Glue Crawler scans the processed logs stored in S3, identifying patterns and structuring them into tables.
+•	The AWS Glue Data Catalog organizes log data, making it available for Athena queries.
+Step 5: Querying Logs using Athena
+•	Users execute SQL queries on log data using Amazon Athena.
+•	Example: Querying logs to find all failed login attempts within a time range.
+•	Athena retrieves data directly from S3, eliminating the need for a traditional database.
+Step 6: Continuous Integration & Deployment (CI/CD) Workflow
+•	Developers commit code updates to a GitHub repository.
+•	AWS CodePipeline detects the change and triggers a pipeline execution.
+•	AWS CodeBuild builds and tests the updated application code.
+•	AWS CodeDeploy automatically deploys updates to Lambda functions, OpenSearch configurations, or Glue scripts.
+Step 7: Monitoring & Alerts with SNS
+•	If a log matches predefined criteria (e.g., error spikes, security threats), SNS sends notifications to relevant teams.
+•	CloudWatch Metrics monitor Lambda execution times, OpenSearch indexing performance, and Glue job completion.
+ 
 
 ---
 
