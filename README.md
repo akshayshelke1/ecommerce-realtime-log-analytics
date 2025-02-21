@@ -76,39 +76,39 @@ The architecture is designed for high availability, scalability, and automation,
 
 ## Architecture Flow  
 
-1. **Code Commit:**  
-    - Developers push code to **GitHub**, triggering the CI/CD pipeline.  
-
-This section details the step-by-step process from log ingestion to analysis and monitoring.
-
-1. **Step 1 - Log Collection & Storage:**
+**Step 1: Log Collection & Storage:**
  
     - The e-commerce application generates logs (transaction logs, user activity logs, error logs).
     - Logs are automatically sent to an Amazon S3 bucket in raw format.
     - S3 Event Notifications trigger an AWS Lambda function whenever a new log file is uploaded.
 
-Step 2: Real-time Processing & Transformation
-•	The Lambda function reads and processes the raw logs, extracting key information such as IP addresses, user actions, product interactions, and error messages.
-•	The processed logs are stored back in a separate S3 bucket for further indexing and querying.
-•	If a critical issue is detected (e.g., multiple failed logins, high error rates), Amazon SNS sends an alert via email/SMS.
-Step 3: Log Indexing & Search in OpenSearch
-•	A second Lambda function sends processed log data to Amazon OpenSearch for indexing.
-•	Users can perform full-text searches on logs and visualize trends via Kibana dashboards.
-Step 4: Data Cataloging & ETL using AWS Glue
-•	AWS Glue Crawler scans the processed logs stored in S3, identifying patterns and structuring them into tables.
-•	The AWS Glue Data Catalog organizes log data, making it available for Athena queries.
-Step 5: Querying Logs using Athena
-•	Users execute SQL queries on log data using Amazon Athena.
-•	Example: Querying logs to find all failed login attempts within a time range.
-•	Athena retrieves data directly from S3, eliminating the need for a traditional database.
-Step 6: Continuous Integration & Deployment (CI/CD) Workflow
-•	Developers commit code updates to a GitHub repository.
-•	AWS CodePipeline detects the change and triggers a pipeline execution.
-•	AWS CodeBuild builds and tests the updated application code.
-•	AWS CodeDeploy automatically deploys updates to Lambda functions, OpenSearch configurations, or Glue scripts.
-Step 7: Monitoring & Alerts with SNS
-•	If a log matches predefined criteria (e.g., error spikes, security threats), SNS sends notifications to relevant teams.
-•	CloudWatch Metrics monitor Lambda execution times, OpenSearch indexing performance, and Glue job completion.
+**Step 2: Real-time Processing & Transformation**
+    - The Lambda function reads and processes the raw logs, extracting key information such as IP addresses, user actions, product interactions, and error messages.
+    - The processed logs are stored back in a separate S3 bucket for further indexing and querying.
+    - If a critical issue is detected (e.g., multiple failed logins, high error rates), Amazon SNS sends an alert via email/SMS.
+
+**Step 3: Log Indexing & Search in OpenSearch**
+    - A second Lambda function sends processed log data to Amazon OpenSearch for indexing.
+    - Users can perform full-text searches on logs and visualize trends via Kibana dashboards.
+
+**Step 4: Data Cataloging & ETL using AWS Glue**
+    - AWS Glue Crawler scans the processed logs stored in S3, identifying patterns and structuring them into tables.
+    - The AWS Glue Data Catalog organizes log data, making it available for Athena queries.
+
+**Step 5: Querying Logs using Athena**
+    - Users execute SQL queries on log data using Amazon Athena.
+    - Example: Querying logs to find all failed login attempts within a time range.
+    - Athena retrieves data directly from S3, eliminating the need for a traditional database.
+
+**Step 6: Continuous Integration & Deployment (CI/CD) Workflow**
+    - Developers commit code updates to a GitHub repository.
+    - AWS CodePipeline detects the change and triggers a pipeline execution.
+    - AWS CodeBuild builds and tests the updated application code.
+    - AWS CodeDeploy automatically deploys updates to Lambda functions, OpenSearch configurations, or Glue scripts.
+
+**Step 7: Monitoring & Alerts with SNS**
+    - If a log matches predefined criteria (e.g., error spikes, security threats), SNS sends notifications to relevant teams.
+    - CloudWatch Metrics monitor Lambda execution times, OpenSearch indexing performance, and Glue job completion.
  
 
 ---
