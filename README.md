@@ -124,10 +124,11 @@ The architecture is designed for high availability, scalability, and automation,
 
 ## Benefits  
 
-- **Scalable and Secure:** Easily scales with demand while maintaining secure communication between microservices.  
-- **High Observability:** Detailed insights into application performance and health.  
-- **Faster Deployment Cycles:** Automated CI/CD pipeline reduces manual intervention and accelerates release cycles.  
-- **Consistent Environments:** Docker ensures consistency across development, testing, and production.  
+- **Improved System Monitoring:** Enables quick detection of anomalies.
+- **Automated Log Processing:** Reduces manual effort and enhances efficiency.
+- **Scalable & Cost-Effective:** Uses AWS serverless and managed services.
+- **Enhanced Troubleshooting:** OpenSearch and Athena provide deep insights.
+- **Faster Deployments:** CI/CD integration ensures rapid updates.on.  
 
 ---
 
