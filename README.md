@@ -76,8 +76,6 @@ The architecture is designed for high availability, scalability, and automation,
 
 ## Architecture Flow  
 
-![Flow diagram!](https://github.com/akshayshelke1/ecommerce-realtime-log-analytics/blob/main/architecture/flowchart.png)
-
 <div align="center">
   <img src="https://github.com/akshayshelke1/ecommerce-realtime-log-analytics/blob/main/architecture/flowchart.png">
 </div>
