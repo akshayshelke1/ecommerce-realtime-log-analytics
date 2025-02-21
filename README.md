@@ -58,9 +58,6 @@ The architecture is designed for high availability, scalability, and automation,
 
 
 # CI/CD Pipeline and Architecture for Microservices on AWS  
-
-This setup outlines a CI/CD pipeline for deploying a microservices-based application on AWS using Kubernetes (EKS), Istio, Jenkins, and other key tools. It automates infrastructure provisioning, application deployment, monitoring, and alerting for a scalable and observable environment.  
-
 ---
 
 ## Diagram Components  
