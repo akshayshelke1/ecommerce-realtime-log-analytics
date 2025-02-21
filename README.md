@@ -21,9 +21,6 @@ This solution is designed to be highly scalable, resilient, and cost-effective, 
 
 - E-commerce Real-time Log Analytics is ideal for businesses seeking real-time log monitoring, data analytics, and continuous deployment on the cloud. Its modular architecture allows easy integration with existing systems, making it a versatile solution for modern e-commerce platforms.
 
-This project is perfect for demonstrating AWS cloud architecture, DevOps CI/CD practices, and data analytics capabilities, making it suitable for Solutions Architect and Cloud Engineer portfolios.
-
-
 ## Architecture Overview
 
 ![Actual architecture diagram!](https://github.com/akshayshelke1/automated-cicd-pipeline/blob/main/architecture/architecture.png)
