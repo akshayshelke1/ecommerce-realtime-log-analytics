@@ -23,41 +23,38 @@ This solution is designed to be highly scalable, resilient, and cost-effective, 
 
 ## Architecture Overview
 
-![Actual architecture diagram!](https://github.com/akshayshelke1/automated-cicd-pipeline/blob/main/architecture/architecture.png)
+![Actual architecture diagram!](https://github.com/akshayshelke1/ecommerce-realtime-log-analytics/blob/main/architecture/architecture-diagram.png)
 
-1.  #### Developer Workstations: 
-Developers write and commit code to a GitHub repository, kicking off the automation process.
+The architecture is designed for high availability, scalability, and automation, integrating multiple AWS services for seamless log collection, processing, analytics, and alerting. The key components include:
 
-2.  #### Continuous Integration:
-Jenkins automatically pulls the latest code from GitHub, builds the application, and runs tests to catch any issues early.
-It then creates Docker images of the application and pushes them to a Docker Registry, like Amazon ECR, ensuring consistent and reliable deployments.
+1.  #### Log Ingestion & Storage: 
+•	Amazon S3 serves as the central repository for raw and processed logs, ensuring scalability and durability.
+•	E-commerce application logs (such as user activity, transactions, and errors) are automatically pushed to S3 via API Gateway or directly from the application.
 
-3.  #### Infrastructure as Code:
-Terraform handles the infrastructure setup on AWS, which includes:
+2.  #### Real-time Processing & Transformation:
+•	AWS Lambda functions process new logs as they arrive in S3, extracting relevant data, filtering unnecessary entries, and transforming them into a structured format.
+•	Amazon SNS is triggered for real-time alerts when anomalies or critical events are detected.
 
-  - VPC: For secure networking.
-  - IAM Roles and Policies: Ensuring proper security and permissions.
-  - EKS Cluster: To run the Kubernetes workloads.
-  - RDS: For managing persistent storage needs.
+3.  #### Search & Indexing for Analysis:
+•	Amazon OpenSearch Service (formerly Elasticsearch) indexes processed logs, enabling full-text search and real-time visualization through Kibana.
+•	E-commerce teams can search for errors, performance issues, or specific transactions in real time.
 
-4.  #### Continuous Deployment:
-Jenkins takes the Docker images from the registry and deploys them to the Amazon EKS cluster using Kubernetes manifests or Helm charts.
-Istio is used as a service mesh to efficiently manage traffic between microservices, enhancing communication and security.
+4.  #### ETL & Data Cataloging for Structured Analysis:
+•	AWS Glue automatically crawls and catalogs processed logs, preparing structured datasets for analytical queries.
+•	The Glue Data Catalog organizes log data into a schema for better accessibility.
 
-5.  #### Service Mesh with Istio:
-Istio plays a key role in managing traffic, securing communication with mutual TLS (mTLS), and providing observability into the microservices environment.
-The Istio Ingress Gateway manages all external access to the services, ensuring secure and reliable routing.
 
-6.  #### Monitoring and Logging:
-Prometheus collects detailed metrics from the Kubernetes cluster and Istio, providing real-time insights.
-Grafana visualizes these metrics through interactive dashboards.
-Fluentd centralizes logging, sending logs to Amazon CloudWatch or Elasticsearch for easy monitoring and troubleshooting.
-Alertmanager integrates with Prometheus to trigger alerts when issues are detected.
+5.  #### Query & Insights using SQL
+•	Amazon Athena provides serverless SQL querying of log data stored in S3, enabling detailed log analysis and trend identification without requiring a database.
 
-7.  #### Continuous Feedback:
-Alertmanager notifies the team through Slack or email, ensuring quick response times to any incidents.
-Jenkins provides continuous feedback on build and deployment statuses, keeping developers in the loop throughout the CI/CD pipeline.
-This setup ensures a seamless flow from code commit to deployment, with robust monitoring, security, and feedback mechanisms, making the application scalable, secure, and highly observable.
+6.  #### CI/CD for Deployment & Automation
+•	AWS CodePipeline orchestrates the build, test, and deployment process for application changes and infrastructure updates.
+•	AWS CodeBuild compiles and tests updates to ensure stability.
+•	AWS CodeDeploy automates the deployment of application updates, ensuring zero downtime.
+
+7.  #### Monitoring & Alerting
+•	Amazon SNS triggers alerts based on specific log patterns (e.g., high error rates, failed transactions, or security threats).
+•	CloudWatch provides system-level monitoring for Lambda, OpenSearch, and Glue.
 
 
 # CI/CD Pipeline and Architecture for Microservices on AWS  
