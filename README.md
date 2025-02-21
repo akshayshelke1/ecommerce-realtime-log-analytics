@@ -81,11 +81,12 @@ The architecture is designed for high availability, scalability, and automation,
 
 This section details the step-by-step process from log ingestion to analysis and monitoring.
 
-**Step 1: Log Collection & Storage: **
+1. **Step 1 - Log Collection & Storage:**
  
     - The e-commerce application generates logs (transaction logs, user activity logs, error logs).
     - Logs are automatically sent to an Amazon S3 bucket in raw format.
-•	S3 Event Notifications trigger an AWS Lambda function whenever a new log file is uploaded.
+    - S3 Event Notifications trigger an AWS Lambda function whenever a new log file is uploaded.
+
 Step 2: Real-time Processing & Transformation
 •	The Lambda function reads and processes the raw logs, extracting key information such as IP addresses, user actions, product interactions, and error messages.
 •	The processed logs are stored back in a separate S3 bucket for further indexing and querying.
