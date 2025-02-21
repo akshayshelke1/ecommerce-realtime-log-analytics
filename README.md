@@ -134,11 +134,11 @@ The architecture is designed for high availability, scalability, and automation,
 
 ## Prerequisites  
 
-- AWS Account with required IAM permissions.  
-- Jenkins server configured with access to GitHub, Amazon ECR, and Amazon EKS.  
-- Terraform installed and configured for AWS.  
-- Docker installed for local development and image creation.  
-- Prometheus, Grafana, Fluentd, and Alertmanager configured within the Kubernetes cluster.  
+- AWS Account with necessary permissions.
+- GitHub Repository for CI/CD integration.
+- E-commerce Log Data Samples for testing.
+- IAM Roles & Policies to allow services to interact.
+- AWS CLI & SDKs for local development and testing.
 
 ---
  
