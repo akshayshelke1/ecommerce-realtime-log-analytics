@@ -28,33 +28,33 @@ This solution is designed to be highly scalable, resilient, and cost-effective, 
 The architecture is designed for high availability, scalability, and automation, integrating multiple AWS services for seamless log collection, processing, analytics, and alerting. The key components include:
 
 1.  #### Log Ingestion & Storage: 
-•	Amazon S3 serves as the central repository for raw and processed logs, ensuring scalability and durability.
-•	E-commerce application logs (such as user activity, transactions, and errors) are automatically pushed to S3 via API Gateway or directly from the application.
+- Amazon S3 serves as the central repository for raw and processed logs, ensuring scalability and durability.
+- E-commerce application logs (such as user activity, transactions, and errors) are automatically pushed to S3 via API Gateway or directly from the application.
 
 2.  #### Real-time Processing & Transformation:
-•	AWS Lambda functions process new logs as they arrive in S3, extracting relevant data, filtering unnecessary entries, and transforming them into a structured format.
-•	Amazon SNS is triggered for real-time alerts when anomalies or critical events are detected.
+- AWS Lambda functions process new logs as they arrive in S3, extracting relevant data, filtering unnecessary entries, and transforming them into a structured format.
+- Amazon SNS is triggered for real-time alerts when anomalies or critical events are detected.
 
 3.  #### Search & Indexing for Analysis:
-•	Amazon OpenSearch Service (formerly Elasticsearch) indexes processed logs, enabling full-text search and real-time visualization through Kibana.
-•	E-commerce teams can search for errors, performance issues, or specific transactions in real time.
+- Amazon OpenSearch Service (formerly Elasticsearch) indexes processed logs, enabling full-text search and real-time visualization through Kibana.
+- E-commerce teams can search for errors, performance issues, or specific transactions in real time.
 
 4.  #### ETL & Data Cataloging for Structured Analysis:
-•	AWS Glue automatically crawls and catalogs processed logs, preparing structured datasets for analytical queries.
-•	The Glue Data Catalog organizes log data into a schema for better accessibility.
+- AWS Glue automatically crawls and catalogs processed logs, preparing structured datasets for analytical queries.
+- The Glue Data Catalog organizes log data into a schema for better accessibility.
 
 
 5.  #### Query & Insights using SQL
-•	Amazon Athena provides serverless SQL querying of log data stored in S3, enabling detailed log analysis and trend identification without requiring a database.
+- Amazon Athena provides serverless SQL querying of log data stored in S3, enabling detailed log analysis and trend identification without requiring a database.
 
 6.  #### CI/CD for Deployment & Automation
-•	AWS CodePipeline orchestrates the build, test, and deployment process for application changes and infrastructure updates.
-•	AWS CodeBuild compiles and tests updates to ensure stability.
-•	AWS CodeDeploy automates the deployment of application updates, ensuring zero downtime.
+- AWS CodePipeline orchestrates the build, test, and deployment process for application changes and infrastructure updates.
+- AWS CodeBuild compiles and tests updates to ensure stability.
+- AWS CodeDeploy automates the deployment of application updates, ensuring zero downtime.
 
 7.  #### Monitoring & Alerting
-•	Amazon SNS triggers alerts based on specific log patterns (e.g., high error rates, failed transactions, or security threats).
-•	CloudWatch provides system-level monitoring for Lambda, OpenSearch, and Glue.
+- Amazon SNS triggers alerts based on specific log patterns (e.g., high error rates, failed transactions, or security threats).
+- CloudWatch provides system-level monitoring for Lambda, OpenSearch, and Glue.
 
 
 # CI/CD Pipeline and Architecture for Microservices on AWS  
@@ -65,17 +65,15 @@ This setup outlines a CI/CD pipeline for deploying a microservices-based applica
 
 ## Diagram Components  
 
-- **GitHub:** Version control and source code repository where developers push code changes.  
-- **Jenkins:** CI/CD server that automates builds, tests, and deployments.  
-- **Docker:** Containerizes the application to ensure consistent environments across development, testing, and production.  
-- **Terraform:** Automates provisioning of AWS infrastructure, including VPCs, IAM roles, EKS clusters, and RDS for storage.  
-- **Amazon ECR:** Secure Docker image repository integrated with AWS services.  
-- **Amazon EKS:** Kubernetes service for deploying and managing containerized applications.  
-- **Istio:** Service mesh that manages service-to-service communication with advanced traffic routing, mTLS security, and observability.  
-- **Prometheus & Grafana:** Monitoring stack where Prometheus collects metrics and Grafana visualizes them through dashboards.  
-- **Fluentd:** Centralized logging solution that forwards logs to Amazon CloudWatch or Elasticsearch.  
-- **Alertmanager:** Manages alerts based on metrics collected by Prometheus.  
-- **Amazon CloudWatch:** Cloud-based logging and monitoring service for real-time visibility.  
+- **Amazon S3 –** Stores raw and processed logs.
+- **AWS Lambda –** Processes incoming log data in real time.
+- **Amazon OpenSearch –** Indexes logs and enables full-text search and visualization.
+- **AWS Glue –** Extracts, transforms, and loads data for structured analytics.
+- **Amazon Athena –** Provides SQL-based log querying.
+- **AWS CodePipeline –** Automates CI/CD deployment of the pipeline.
+- **AWS CodeBuild –** Builds and tests application components.
+- **AWS CodeDeploy –** Deploys changes to the cloud environment.
+- **Amazon SNS –** Sends real-time alerts and notifications.
 
 ---
 
