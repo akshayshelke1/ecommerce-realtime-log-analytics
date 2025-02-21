@@ -78,6 +78,10 @@ The architecture is designed for high availability, scalability, and automation,
 
 ![Flow diagram!](https://github.com/akshayshelke1/ecommerce-realtime-log-analytics/blob/main/architecture/flowchart.png)
 
+<p align="center">
+  <src="https://github.com/akshayshelke1/ecommerce-realtime-log-analytics/blob/main/architecture/flowchart.png">
+</p>
+
 **Step 1: Log Collection & Storage:**
 - The e-commerce application generates logs (transaction logs, user activity logs, error logs).
 - Logs are automatically sent to an Amazon S3 bucket in raw format.
