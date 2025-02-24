@@ -4,13 +4,13 @@
 
 - Go to the AWS S3 Console: S3 Console.
 - Click Create Bucket.
-- Name your bucket (e.g., my-log-bucket) and choose a region.
+- Name your bucket (e.g., my-build-bucket) and choose a region.
 - Leave the other settings as default and click Create.
-- Upload Sample Data:
-
-Upload some sample log files (e.g., .log, .csv, or .json) to the bucket.
+- Upload Sample Data.
 
 **Test Input (Sample Log File)**
+
+Upload some sample log files (e.g., .log, .csv, or .json) to the bucket.
 
 ```bash
 timestamp,user_id,action,page,status_code,amount_spent
