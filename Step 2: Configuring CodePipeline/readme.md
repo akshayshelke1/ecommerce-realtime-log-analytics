@@ -51,3 +51,42 @@ git add .
 git commit -m "Initial commit with Lambda, buildspec, and appspec"
 git push origin main
 ```
+
+### 4. **Create CodePipeline**
+
+📍 AWS Console → CodePipeline → Create Pipeline
+
+- Pipeline Name: ecommerce-log-pipeline
+- Service Role: Create a new role or use an existing one with permissions: 
+o	AmazonS3FullAccess
+o	AWSCodePipelineFullAccess
+o	AWSCodeBuildAdminAccess
+o	AWSCodeDeployFullAccess
+- Artifact Store: Use a new S3 bucket or select an existing one.
+
+### 5. **Source Stage: GitHub**
+
+- Source Provider: GitHub (Version 2)
+- Repository: ecommerce-log-pipeline
+- Branch: main
+- Trigger: GitHub Webhook (Triggers on code push)
+
+### 6. **Build Stage: CodeBuild**
+
+📍 AWS Console → CodeBuild → Create Project 
+- Name: ecommerce-log-build
+- Environment: 
+o	OS: Ubuntu
+o	Runtime: Standard: 6.0
+o	Buildspec: Use buildspec.yml in the repo
+- Artifacts: 
+o	Type: S3
+o	Bucket: my-build-bucket
+
+
+### 7. **Deploy Stage: CodeDeploy**
+
+- Deploy Provider: AWS CodeDeploy
+- Application Name: ecommerce-log-app
+- Deployment Group: ecommerce-log-deployment-group
+- Service Role: Attach the AWSLambdaFullAccess policy.
