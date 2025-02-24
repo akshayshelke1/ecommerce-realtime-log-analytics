@@ -76,7 +76,7 @@ o	AWSCodeDeployFullAccess
 📍 AWS Console → CodeBuild → Create Project 
 - Name: ecommerce-log-build
 - Environment: 
-o	OS: Ubuntu
+  - OS: Ubuntu
 o	Runtime: Standard: 6.0
 o	Buildspec: Use buildspec.yml in the repo
 - Artifacts: 
