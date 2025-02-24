@@ -9,7 +9,7 @@
   - In the Query Editor, select the logs_table from the Glue Catalog.
   - Run a sample query:
 
-3.	SELECT * FROM logs_table WHERE action = 'purchase';
+**SELECT * FROM logs_table WHERE action = 'purchase';**
 
 
 ### **Expected Output:**
