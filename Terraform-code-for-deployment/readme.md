@@ -26,7 +26,7 @@ resource "aws_s3_bucket" "pipeline_bucket" {
 }
 ```
 
-### 3. **Create OpenSearch Domain  **
+### 3. **Create OpenSearch Domain**
 
 Define an OpenSearch domain for indexing logs.
 
@@ -57,7 +57,7 @@ resource "aws_opensearch_domain" "log_domain" {
 }
 ```
 
-### 4. ** Create Lambda Function **
+### 4. **Create Lambda Function**
 
 Create a Lambda function that will process logs from S3 and push them to OpenSearch.
 
@@ -104,7 +104,7 @@ resource "aws_iam_role_policy" "lambda_policy" {
 }
 ```
 
-### 5. ** Create Glue Crawler **
+### 5. **Create Glue Crawler**
 
 Create a Glue Crawler to catalog the log data stored in S3.
 
