@@ -14,8 +14,7 @@ Glue is used to create a catalog for the raw logs in S3, so they can be easily q
 
 After the crawler runs, it creates metadata tables in the Glue Catalog.
 
+**2. Check Glue Catalog**
 
-```bash
-git clone https://github.com/your-username/ecommerce-log-pipeline.git
-cd ecommerce-log-pipeline
-```
+1.	Go to AWS Glue → Databases → log-database.
+2.	You should see a table like logs_table, representing the raw log files in S3.
