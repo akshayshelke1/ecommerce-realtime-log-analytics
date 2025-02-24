@@ -152,7 +152,7 @@ resource "aws_iam_role_policy" "glue_policy" {
 }
 ```
 
-### 6. ** Create Athena Database **
+### 6. **Create Athena Database**
 
 Define an Athena database where Glue will store the schema of your logs.
 
@@ -163,7 +163,7 @@ resource "aws_athena_database" "log_database" {
 }
 ```
 
-### 7. **Create SNS Topic **
+### 7. **Create SNS Topic**
 
 Set up an SNS topic to notify users of pipeline events.
 
@@ -179,7 +179,7 @@ resource "aws_sns_topic_subscription" "sns_email_subscription" {
 }
 ```
 
-### 8. **  Create CodeBuild Project **
+### 8. **Create CodeBuild Project**
 
 Define the build process for the Lambda function.
 
@@ -212,7 +212,7 @@ resource "aws_codebuild_project" "log_build" {
   }
 }
 ```
-### 9. **  Create CodeDeploy Application **
+### 9. **Create CodeDeploy Application**
 
 This defines how CodeDeploy will handle Lambda function deployments.
 
@@ -234,7 +234,7 @@ resource "aws_codedeploy_deployment_group" "log_deploy_group" {
   }
 }
 ```
-### 10. **Create CodePipeline **
+### 10. **Create CodePipeline**
 
 This will define the entire pipeline from source to build to deploy.
 
