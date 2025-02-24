@@ -58,10 +58,10 @@ git push origin main
 
 - Pipeline Name: ecommerce-log-pipeline
 - Service Role: Create a new role or use an existing one with permissions: 
-o	AmazonS3FullAccess
-o	AWSCodePipelineFullAccess
-o	AWSCodeBuildAdminAccess
-o	AWSCodeDeployFullAccess
+  - AmazonS3FullAccess
+  - AWSCodePipelineFullAccess
+  - AWSCodeBuildAdminAccess
+  - AWSCodeDeployFullAccess
 - Artifact Store: Use a new S3 bucket or select an existing one.
 
 ### 5. **Source Stage: GitHub**
@@ -77,11 +77,11 @@ o	AWSCodeDeployFullAccess
 - Name: ecommerce-log-build
 - Environment: 
   - OS: Ubuntu
-o	Runtime: Standard: 6.0
-o	Buildspec: Use buildspec.yml in the repo
+  - Runtime: Standard: 6.0
+  - Buildspec: Use buildspec.yml in the repo
 - Artifacts: 
-o	Type: S3
-o	Bucket: my-build-bucket
+  - Type: S3
+  - Bucket: my-build-bucket
 
 
 ### 7. **Deploy Stage: CodeDeploy**
