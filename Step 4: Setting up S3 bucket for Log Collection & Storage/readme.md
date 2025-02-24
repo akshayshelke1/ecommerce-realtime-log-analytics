@@ -8,7 +8,7 @@
 - Leave the other settings as default and click Create.
 - Upload Sample Data.
 
-**Test Input (Sample Log File)**
+**Test Input (Sample Log File):**
 
 Upload some sample log files (e.g., .log, .csv, or .json) to the bucket.
 
